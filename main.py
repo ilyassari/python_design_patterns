@@ -18,7 +18,7 @@ patterns = {
 }
 
 # change selection according to patterns
-selection = 1
+selection = 4
 
 match selection:
     case 1:
@@ -68,6 +68,19 @@ match selection:
         # Attach Observer
         subject.attach(observer3)
         subject.notify("Hello observers!")
+
+    case 4:
+        from builder import Director, ConcreteBuilder
+
+        # Create Builder and Director
+        builder = ConcreteBuilder()
+        director = Director(builder)
+
+        # Construct Product
+        director.construct('part1', 'part2', 'extra1', 'extra2')
+        product = builder.get_result()
+
+        print(product)
 
     case _:
         try:

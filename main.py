@@ -40,8 +40,8 @@ patterns = {
 
 # change selection according to patterns
 selection = {
-    'group': 3,
-    'pattern': 1
+    'group': 1,
+    'pattern': 4
 }
 
 match selection['group']:
@@ -62,6 +62,7 @@ match selection['group']:
             case 2:
                 from creational import AnimalFactory
 
+                # Define Factory
                 animal_factory = AnimalFactory()
 
                 # Create first instance
@@ -78,7 +79,24 @@ match selection['group']:
                 pass
 
             case 4: # Prototype Pattern
-                pass
+                from creational import ConcretePrototype
+
+                # Create Base Instance
+                base_instance = ConcretePrototype()
+                base_instance.property1 = 1
+                base_instance.property2 = 2
+                base_instance.property3 = (3, 4, 5,)
+
+                # Make Clone
+                clone = base_instance.clone()
+
+                # Check Clone
+                print(clone.property1)
+                print(clone.property2)
+                print(clone.property3)
+                print(clone is base_instance)
+                print(clone.property3 is base_instance.property3)
+
 
             case 5: # Builder Pattern
                 from creational import Director, ConcreteBuilder
